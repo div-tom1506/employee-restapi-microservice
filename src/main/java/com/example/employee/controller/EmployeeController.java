@@ -44,7 +44,15 @@ public class EmployeeController {
 	public Employee getEmployeeById(@PathVariable("id") Long empId) {
 		LOGGER.info("Recevied request to get employee by id: "+empId);
 		
-		return employeeService.getEmployeByEmpId(empId);
+		return employeeService.getEmployeeByEmpId(empId);
+		
+	}
+	
+	@GetMapping("/name/{name}")
+	public List<Employee> getEmployeeById(@PathVariable String name) {
+		LOGGER.info("Recevied request to get employee by name: "+name);
+		
+		return employeeService.getEmployeeByName(name);
 		
 	}
 	

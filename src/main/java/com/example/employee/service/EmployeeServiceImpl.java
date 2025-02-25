@@ -32,10 +32,17 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public Employee getEmployeByEmpId(Long empId) {
+	public Employee getEmployeeByEmpId(Long empId) {
 		LOGGER.info("fetching employee by id: "+empId);
 		return employeeRepository.findById(empId)
 				.orElseThrow(() -> new EmployeeNotFoundException("Employee not found with Id: "+empId));
+	}
+	
+	@Override
+	public List<Employee> getEmployeeByName(String name) {
+		LOGGER.info("fetching employee by name: "+name);
+		
+		return employeeRepository.findByName(name);
 	}
 
 	@Override
@@ -57,7 +64,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 		if(!employeeRepository.existsById(empId)) {
 			LOGGER.error("Employee not found with id: "+empId);
 			return "Employee not found with Id: "+empId;
-		}
+		}	
 		
 		employeeRepository.deleteById(empId);
 		return "Employee with id "+empId+" sucessfully removed.";

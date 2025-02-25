@@ -7,6 +7,7 @@ This is a simple Spring Boot project that provides a REST API for performing CRU
 * Create an employee
 * Retrieve all employees
 * Retrieve a specific employee by ID
+* Retrieve a specific employee by name
 * Update an employee's details
 * Delete an employee
 * Exception handling
@@ -24,7 +25,7 @@ This is a simple Spring Boot project that provides a REST API for performing CRU
 ### Prerequisites
 
 * Java 17+
-*Maven
+* Maven
 
 ### Steps
 
@@ -47,6 +48,7 @@ This is a simple Spring Boot project that provides a REST API for performing CRU
 |--------|-------------------|----------------------------|
 | GET    | `/employee/all`      | Get all employees         |
 | GET    | `/employee/{id}` | Get employee by ID        |
+| GET    | `/employee/name/{name}` | Get employee by name        |
 | POST   | `/employee/create`      | Create a new employee     |
 | PUT    | `/employee/update/{id}` | Update an employee        |
 | DELETE | `/employee/remove/{id}` | Delete an employee        |

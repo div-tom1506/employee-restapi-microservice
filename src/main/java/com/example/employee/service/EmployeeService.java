@@ -10,7 +10,9 @@ public interface EmployeeService {
 	
 	List<Employee> getAllEmployees();
 	
-	Employee getEmployeByEmpId(Long empId);
+	Employee getEmployeeByEmpId(Long empId);
+	
+	List<Employee> getEmployeeByName(String name);
 	
 	Employee updateEmployeeDetails(Long empId, Employee employeeDetails);
 	
