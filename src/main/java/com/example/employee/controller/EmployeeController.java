@@ -28,7 +28,7 @@ public class EmployeeController {
 	
 	@PostMapping("/create")
 	public Employee createEmployee(@RequestBody Employee employee) {
-		LOGGER.info("Received request to create employee: ", employee.getName());
+		LOGGER.info("Received request to create employee: "+employee.getName());
 		
 		return employeeService.createEmployee(employee);
 	}
@@ -42,7 +42,7 @@ public class EmployeeController {
 	
 	@GetMapping("/{id}")
 	public Employee getEmployeeById(@PathVariable("id") Long empId) {
-		LOGGER.info("Recevied request to get employee by id: ", empId);
+		LOGGER.info("Recevied request to get employee by id: "+empId);
 		
 		return employeeService.getEmployeByEmpId(empId);
 		
@@ -51,14 +51,14 @@ public class EmployeeController {
 	@PutMapping("/update/{id}")
 	public Employee updateEmployeeDetails(@PathVariable("id") Long empId, @RequestBody Employee employeeDetails)
 	{
-		LOGGER.info("Received request to update employee with Id: ", empId);
+		LOGGER.info("Received request to update employee with Id: "+empId);
 		
 		return employeeService.updateEmployeeDetails(empId, employeeDetails);
 	}
 	
 	@DeleteMapping("/remove/{id}")
 	public String removeEmployee(@PathVariable("id") Long empId) {
-		LOGGER.info("Received request to delete employee with Id: ", empId);
+		LOGGER.info("Received request to delete employee with Id: "+empId);
 		
 		return employeeService.removeEmployee(empId);
 	}

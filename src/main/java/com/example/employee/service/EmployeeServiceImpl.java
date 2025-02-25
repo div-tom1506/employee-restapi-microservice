@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.employee.exception.EmployeeNotFoundException;
 import com.example.employee.model.Employee;
 import com.example.employee.repository.EmployeeRepository;
 
@@ -20,7 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public Employee createEmployee(Employee employee) {
-		LOGGER.info("creating new employee: ", employee.getName());
+		LOGGER.info("creating new employee: "+employee.getName());
 		return employeeRepository.save(employee);
 	}
 
@@ -32,15 +33,18 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public Employee getEmployeByEmpId(Long empId) {
-		LOGGER.info("fetching employee by id: ", empId);
-		return employeeRepository.findById(empId).orElseThrow(); // if emp not found then log with id
+		LOGGER.info("fetching employee by id: "+empId);
+		return employeeRepository.findById(empId)
+				.orElseThrow(() -> new EmployeeNotFoundException("Employee not found with Id: "+empId));
 	}
 
 	@Override
 	public Employee updateEmployeeDetails(Long empId, Employee employeeDetails) {
-		LOGGER.info("updating employee data for id: ", empId);
+		LOGGER.info("updating employee data for id: "+empId);
 		
-		Employee employee = employeeRepository.findById(empId).orElseThrow(); // if emp not found then log with id
+		Employee employee = employeeRepository.findById(empId)
+				.orElseThrow(() -> new EmployeeNotFoundException("Employee not found with Id: "+empId));
+		
 		employee.setName(employeeDetails.getName());
 		employee.setDesignation(employeeDetails.getDesignation());
 		return employeeRepository.save(employee);	
@@ -48,15 +52,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public String removeEmployee(Long empId) {
-		LOGGER.info("removing employee for id: ",empId);
+		LOGGER.info("removing employee for id: "+empId);
 		
 		if(!employeeRepository.existsById(empId)) {
-			LOGGER.error("Employee not foiund with id: ",empId);
-			// throw error here
+			LOGGER.error("Employee not found with id: "+empId);
+			return "Employee not found with Id: "+empId;
 		}
 		
 		employeeRepository.deleteById(empId);
-		String response = "Employee with id - "+empId+" sucessfully removed.";
-		return response;
+		return "Employee with id "+empId+" sucessfully removed.";
 	}
 }

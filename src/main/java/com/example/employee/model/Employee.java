@@ -1,5 +1,6 @@
 package com.example.employee.model;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +18,9 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long empId;
+	@Nonnull
 	private String name;
+	@Nonnull
 	private String designation;
 
 }
