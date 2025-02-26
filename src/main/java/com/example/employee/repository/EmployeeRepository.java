@@ -11,5 +11,7 @@ import com.example.employee.model.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	
 	List<Employee> findByName(String name);
+	
+	List<Employee> findAllByOrderByAgeAsc();
 
 }

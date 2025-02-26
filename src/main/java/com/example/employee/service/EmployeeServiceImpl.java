@@ -44,6 +44,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 		return employeeRepository.findByName(name);
 	}
+	
+	@Override
+	public List<Employee> sortEmployeeByAge() {
+		LOGGER.info("fetching all employees with age");
+		
+		return employeeRepository.findAllByOrderByAgeAsc();
+	}
 
 	@Override
 	public Employee updateEmployeeDetails(Long empId, Employee employeeDetails) {

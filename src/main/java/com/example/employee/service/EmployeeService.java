@@ -14,6 +14,8 @@ public interface EmployeeService {
 	
 	List<Employee> getEmployeeByName(String name);
 	
+	List<Employee> sortEmployeeByAge();
+	
 	Employee updateEmployeeDetails(Long empId, Employee employeeDetails);
 	
 	String removeEmployee(Long empId);

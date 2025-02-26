@@ -21,6 +21,8 @@ public class Employee {
 	@Nonnull
 	private String name;
 	@Nonnull
+	private int age;
+	@Nonnull
 	private String designation;
 
 }

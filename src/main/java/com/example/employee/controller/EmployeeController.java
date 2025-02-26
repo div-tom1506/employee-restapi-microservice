@@ -50,9 +50,17 @@ public class EmployeeController {
 	
 	@GetMapping("/name/{name}")
 	public List<Employee> getEmployeeById(@PathVariable String name) {
-		LOGGER.info("Recevied request to get employee by name: "+name);
+		LOGGER.info("Recevied request to get employees by name: "+name);
 		
 		return employeeService.getEmployeeByName(name);
+		
+	}
+	
+	@GetMapping("/sortByAge")
+	public List<Employee> sortEmployeeByAge() {
+		LOGGER.info("Recevied request to sort employees by name");
+		
+		return employeeService.sortEmployeeByAge();
 		
 	}
 	
