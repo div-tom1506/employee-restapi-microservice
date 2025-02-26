@@ -13,6 +13,7 @@ This is a simple Spring Boot project that provides a REST API for performing CRU
 * Delete an employee
 * Exception handling
 * Logging with SLF4J
+* CI/CD Pipeline with Jenkins
 
 ## Technologies Used
 
@@ -20,6 +21,7 @@ This is a simple Spring Boot project that provides a REST API for performing CRU
 * Spring Boot
 * Spring Data JPA
 * SLF4J for logging
+* Jenkins for CI/CD
 
 ## Installation
 
@@ -62,6 +64,22 @@ The application uses SLF4J for logging important events such as fetching, creati
 ## Exception Handling
 
 The application has a global exception handler to manage exceptions gracefully.
+
+## CI/CD Pipeline with Jenkins
+
+This project includes a Jenkins pipeline for automated building, testing, and deployment. Below is an overview of the pipeline stages:
+
+### Jenkinsfile Stages:
+
+**Checkout -** Clones the GitHub repository.
+
+**Build -** Uses Maven to build the project.
+
+**Test -** Runs unit tests.
+
+**Deploy -** Deploys the application (can be customized as needed).
+
+**Post Actions -** Cleans workspace and handles success/failure notifications.
 
 ## License
 
