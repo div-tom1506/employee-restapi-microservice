@@ -20,6 +20,7 @@ This is a simple Spring Boot project that provides a REST API for performing CRU
 * Java
 * Spring Boot
 * Spring Data JPA
+* SQL Database
 * SLF4J for logging
 * Jenkins for CI/CD
 
